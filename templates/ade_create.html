@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: left;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+a{
+  display: inline-block;
+  width: 240px;
+  vertical-align: top;
+}
+
+input[type=submit] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+input[type=reset] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Desk Executive</title>
+    <script src="/static/js/cities.js"></script>
+    <a href="/logout" class="button1">Logout</a>
+    <div class="topnav">
+      <a class="active" href="/ade">Home</a>
+      <a href="/ade/view">View Patients</a>
+      <a href="/ade/search">Search Patients</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+</head>
+<body>
+
+<br><br>
+<form method="POST" action="/ade/create">
+    <div>
+        <label>SSN ID:</label>
+        <input type="number" name="ssnId" min="100000000" max="999999999" required>
+        <br>
+    </div>
+    <div>
+        <label>Patient Name:</label>
+        <input type="text" name="name" required>
+        <br>
+    </div>
+    <div>
+        <label>Patient Age:</label>
+        <input type="number" name="age" required>
+        <br>
+    </div>
+    <div>
+        <label>Date of Admission:</label>
+        <input type="date" name="doa" required>
+        <br>
+    </div>
+    <div>
+        <label>Type of Bed:</label>
+        <select name="tob" id="tob" required>
+            <option value="General Ward">General Ward</option>
+            <option value="Semi Sharing">Semi Sharing</option>
+            <option value="Single Room">Single Room</option>
+        </select>
+        <br>
+    </div>
+    <div>
+        <a>Address:</a>
+        <textarea name="address" required></textarea>
+        <br>
+    </div>
+    <div>
+        <label>State:</label>
+        <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" required></select>
+
+
+        <br>
+    </div>
+    <div>
+        <label>City:</label>
+        <select id ="state" name="city" required></select>
+        <br>
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+        <input type="reset">
+    </div>
+    <script language="javascript">print_state("sts");</script>
+    
+</form>
+{% if err %}
+<div style="color:red"><p>{{err}}</p></div>
+{% endif %}
+{% if msg %}
+<div style="color:green"><p>{{msg}}</p></div>
+{% endif %}
+</body>
+</html>

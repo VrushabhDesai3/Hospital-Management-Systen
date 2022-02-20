@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: left;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Check Tests</title>
+    <a href="/logout" class="button1">Logout</a>
+    <div class="topnav">
+      <a class="active" href="/diagnostic">Home</a>
+      <a href="/diagnostic/manage/add">Add New Test</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+</head>
+<body>
+
+    {% for t in temp %}
+        Test ID: {{t[0]}} <br>
+        Test Name: {{t[1]}} <br>
+        Test Charges: {{t[2]}} <br>
+        Date Updated: {{t[3]}}
+        <a href="/diagnostic/manage/update/{{t[0]}}" class="button">Update</a>
+        <a href="/diagnostic/manage/delete/{{t[0]}}" class="button">Remove</a> <br><br>
+    {% endfor %}
+</body>
+</html>

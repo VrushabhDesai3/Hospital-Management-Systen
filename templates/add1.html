@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: left;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+
+input[type=submit] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Inventory</title>
+    <a href="/logout" class="button1">Logout</a>
+    <div class="topnav">
+      <a class="active" href="/pharmacist">Home</a>
+      <a href="/pharmacist/manage/check">Check Inventory</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+</head>
+<body>
+	<br>
+    <form action="/pharmacist/manage/add" method="post">
+    	<div>
+    		<label>Med ID:</label>
+        	<input type="number" id="01" name="mid"> <br>
+        </div>
+
+        <div>
+        	<label>Med Name:</label>
+        	<input type="text" id="02" name="mname"> <br>
+        </div>
+
+        <div>
+        	<label>Unit Price:</label>
+        	<input type="number" id="03" name="mprice"> <br>
+    	</div>
+
+    	<div>
+    		<label>Available Quantity:</label>
+        	<input type="number" id="04" name="quantity"> <br>
+        </div>
+        <br>
+        <input type="submit" value="Submit"><br>
+
+    </form>
+
+
+</body>
+</html>

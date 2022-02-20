@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: center;}
+
+.button {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Tests</title>
+    <a href="/logout" class="button1">Logout</a>
+    <div class="topnav">
+      <a class="active" href="/diagnostic">Home</a>
+      <a href="/diagnostic/issue">Issue Tests</a>
+      <a href="/diagnostic/issued">Issued Tests</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+</head>
+<body>
+	<br><br>
+    <a href="/diagnostic/manage/add" class="button">Add New Test</a>
+    <a href="/diagnostic/manage/check" class="button">Check Tests</a>
+    {{message}}
+
+</body>
+</html>

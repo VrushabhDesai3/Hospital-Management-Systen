@@ -1,0 +1,6 @@
+@media print {
+    /*#navbarsExample08, form, nav, footer, hr {*/
+    /*    display: none;*/
+    /*}*/
+}
+@page { size: A5; margin: 1cm }

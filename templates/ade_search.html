@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: left;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+a{
+  display: inline-block;
+  width: 240px;
+  vertical-align: top;
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+input[type=submit] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+table, td, th {
+  border: 2px solid black;
+  padding: 15px;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+
+}
+
+th {
+  background-color: #737373;
+  height: 50px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Turtles Search</title>
+    <a href="/logout" class="button1">Logout</a>
+    <div class="topnav">
+      <a class="active" href="/ade">Home</a>
+      <a href="/ade/create">Create Patient</a>
+      <a href="/ade/view">View Patient</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+</head>
+<body>
+  <br>
+    <form action="/ade/search" method="post">
+        <div>
+            <label>Patient ID: </label>
+            <input type="number" name="pid">
+            <input type="submit" value="Search"><br><br>
+        </div>
+        
+    </form>
+    {% if session['err'] %}
+    <div style="color: red"><p>{{session.pop('err',None)}}</p></div>
+    {% else %}
+    <div>
+        <table>
+            <tr>
+                <td>Patient Id:</td>
+                <td>{{ patient[0] }}</td>
+            </tr>
+            <tr>
+                <td>SSN Id:</td>
+                <td>{{ patient[1] }}</td>
+            </tr>
+            <tr>
+                <td>Patient Name:</td>
+                <td>{{ patient[2] }}</td>
+            </tr>
+            <tr>
+                <td>Patient Age:</td>
+                <td>{{ patient[3] }}</td>
+            </tr>
+            <tr>
+                <td>Date of Admission:</td>
+                <td>{{ patient[4] }}</td>
+            </tr>
+            <tr>
+                <td>Type of Bed:</td>
+                <td>{{ patient[5] }}</td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>{{ patient[6] }}</td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>{{ patient[7] }}</td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td>{{ patient[8] }}</td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td>{{ patient[9] }}</td>
+            </tr>
+        </table>
+    </div>
+
+     <form action="/ade/bill/{{patient[0]}}" method="POST">
+        <input type="submit" name="bill" value="Room Bill">
+        <input type="submit" name="bill" value="Pharmacy Bill">
+        <input type="submit" name="bill" value="Diagnostics Bill">
+        <input type="submit" name="bill" value="Total Bill">
+    </form>
+
+    {% endif %}
+
+        {{message}}
+
+</body>
+</html>

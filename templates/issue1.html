@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: left;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+input[type=submit] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Issue Meds</title>
+     <a href="/logout" class="button1">Logout</a>
+     <div class="topnav">
+      <a class="active" href="/pharmacist">Home</a>
+      <a href="/pharmacist/manage">Manage Inventory</a>
+      <a href="/pharmacist/issued">Issued Meds</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+
+</head>
+<body>
+    <br>
+    <form action="/pharmacist/issue" method="post">
+        Patient ID:<input type="number" id="01" name="pid">
+        <input type="submit"value="Search"><br><br>
+        </form>
+
+    {% if pid %}
+        Patient ID: {{pid}} <br>
+        <form action="/pharmacist/issue/new/{{pid}}" method="post">
+            Med Required:
+            <select id="02" name="mname">
+                {% for t in temp %}
+                <option>{{t[0]}}</option>
+                {% endfor %}
+            </select>
+            Quantity Required:
+            <input type="number" id="03" name="quantity">
+            <input type="submit"value="Issue Medicine"><br><br>
+        </form>
+    {% endif %}
+
+        {{message}}
+
+</body>
+</html>

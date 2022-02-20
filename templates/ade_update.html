@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: left;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+a{
+  display: inline-block;
+  width: 240px;
+  vertical-align: top;
+}
+
+input[type=submit] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+input[type=reset] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Desk Executive</title>
+    <a href="/logout" class="button1">Logout</a>
+    <div class="topnav">
+      <a class="active" href="/ade">Home</a>
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+
+    <script src="/static/js/cities_update.js"></script>
+</head>
+<body>
+<br>
+<div>
+    <label><b>SSN Id: </b></label><span>{{patient[1]}}</span><br>
+    <label><b>Patient Name: </b></label><span>{{patient[2]}}</span><br>
+    <label><b>Patient Age: </b></label><span>{{patient[3]}}</span><br>
+    <label><b>Date of Admission: </b></label><span>{{patient[4]}}</span><br>
+    <label><b>Type of Bed: </b></label><span>{{patient[5]}}</span><br>
+    <label><b>Address: </b></label><span>{{patient[6]}}</span><br>
+    <label><b>State: </b></label><span>{{patient[8]}}</span><br>
+    <label><b>City: </b></label><span>{{patient[7]}}</span><br>
+</div>
+<br>
+<form method="POST" action="/ade/update/{{patient[0]}}">
+    <div>
+        <label>Patient Name:</label>
+        <input type="text" name="name" value="{{ patient[2] }}" required>
+        <br>
+    </div>
+    <div>
+        <label>Patient Age:</label>
+        <input type="text" name="age" value="{{ patient[3] }}" required>
+        <br>
+    </div>
+    <div>
+        <label>Date of Admission:</label>
+        <input type="date" name="doa" value="{{ patient[4] }}" required>
+        <br>
+    </div>
+    <div>
+        <label>Type of Bed:</label>
+        <select name="tob" id="tob" value="{{ patient[5] }}" required>
+            <option value="{{patient[5]}}" selected>{{patient[5]}}</option>
+            {% if patient[5] != 'General Ward' %}
+            <option value="General Ward">General Ward</option>
+            {% endif %}
+            {% if patient[5] != 'Semi Sharing' %}
+            <option value="Semi Sharing">Semi Sharing</option>
+            {% endif %}
+            {% if patient[5] != 'Single Room' %}
+            <option value="Single Room">Single Room</option>
+            {% endif %}
+        </select>
+        <br>
+    </div>
+    <div>
+        <a>Address:</a>
+        <textarea name="address" required>{{ patient[6] }}</textarea>
+        <br>
+    </div>
+    <div>
+        <label>State:</label>
+        <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt">
+            <option value="{{ patient[8] }}" selected>{{ patient[8] }}</option>
+        </select>
+
+
+        <br>
+    </div>
+    <div>
+        <label>City:</label>
+        <select id ="state" name="city" required>
+            <option value="{{ patient[7] }}" selected>{{ patient[7] }}</option>
+        </select>
+        <br>
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+        <input type="reset">
+    </div>
+    <script language="javascript">print_state("sts");</script>
+    
+</form>
+</body>
+</html>

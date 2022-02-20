@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create</title>
+  <a href="/logout" class="button1">Logout</a>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: center;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+b{
+  display: inline-block;
+  width: 240px;
+  vertical-align: top;
+}
+
+input[type=submit] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+.button {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+  vertical-align: top;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+</style>
+</head>
+<body>
+<h3><p style="text-align:center;">Patient Registration</p></h3>
+<a href="/ade/create" class="button">Create Patient Details</a>
+<a href="/ade/view" class="button">View Patient Details</a>
+<a href="/ade/search" class="button">Search Patient</a>
+   
+    {% if session['err'] %}
+    <div style="color: red"><p>{{session.pop('err',None)}}</p></div>
+    {% endif %}
+    {% if session['msg'] %}
+    <div style="color: green"><p>{{session.pop('msg',None)}}</p></div>
+    {% endif %}
+</body>
+</html>

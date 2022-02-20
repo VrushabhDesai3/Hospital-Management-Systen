@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: center;}
+
+.button {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+
+table, td, th {
+  border: 2px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: #737373;
+  height: 50px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  display: inline-block;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.paging-nav {
+  text-align: right;
+  padding-top: 2px;
+}
+
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1px 7px;
+  background: #91b9e6;
+  color: white;
+  border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+  background: #187ed5;
+  font-weight: bold;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Desk Executive</title>
+    <a href="/logout" class="button1">Logout</a>
+
+  <div class="topnav">
+      <a class="active" href="/ade">Home</a>
+      <a href="/ade/create">Create Patient</a>
+      <a href="/ade/search">Search Patient</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+  
+</head>
+
+<body>
+
+    <br>
+<table border="1px">
+
+    <thead>
+        <tr>
+            <td>Patient ID</td>
+            <td>Patient SSN ID</td>
+            <td>Patient Name</td>
+            <td>Age</td>
+            <td>Date of Admission</td>
+            <td>Type of Bed</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Operations</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patients %}
+        {% if patient[9] == 'Active' %}
+    <tr>
+        <td>{{ patient[0] }}</td>
+        <td>{{ patient[1] }}</td>
+        <td>{{ patient[2] }}</td>
+        <td>{{ patient[3] }}</td>
+        <td>{{ patient[4] }}</td>
+        <td>{{ patient[5] }}</td>
+        <td>{{ patient[7] }}</td>
+        <td>{{ patient[8] }}</td>
+        <td><a href="/ade/update/{{patient[0]}}" class="button"> Edit </a><br><br><a href="/ade/delete/{{patient[0]}}" class="button"> Discharge</a></td>
+    </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% if err %}
+<div style="color:red"><p>{{err}}</p></div>
+{% endif %}
+{% if msg %}
+<div style="color:green"><p>{{msg}}</p></div>
+{% endif %}
+     
+</body>
+</html>

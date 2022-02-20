@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;background-color: #cccccc;text-align: center;}
+
+input[type=text], select, textarea {
+  text-align: center;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label{
+ 
+  width: 240px;
+  display: inline-block;
+
+}
+
+a{
+  display: inline-block;
+  width: 240px;
+  vertical-align: top;
+}
+
+input[type=submit] {
+
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.button1 {
+
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  float: right;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+table, td, th {
+  border: 2px solid black;
+  padding: 15px;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+
+}
+
+th {
+  background-color: #737373;
+  height: 50px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Issued Meds</title>
+    <a href="/logout" class="button1">Logout</a>
+    <div class="topnav">
+      <a class="active" href="/pharmacist">Home</a>
+      <a href="/pharmacist/manage">Manage Inventory</a>
+      <a href="/pharmacist/issue">Issue Meds</a>
+ 
+    </div>
+    <div style="padding-left:16px">
+
+    </div>
+</head>
+<body>
+    <br>
+    <form action="/pharmacist/issued" method="post">
+        Patient ID:<input type="number" id="01" name="pid">
+        <input type="submit" value="Search"><br><br>
+    </form>
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <td>Patient ID</td>
+                <td>Patient SSN ID</td>
+                <td>Patient Name</td>
+                <td>Age</td>
+                <td>Date of Admission</td>
+                <td>Type of Bed</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Status</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in temp3 %}
+            <tr>
+                <td>{{ t[0] }}</td>
+                <td>{{ t[1] }}</td>
+                <td>{{ t[2] }}</td>
+                <td>{{ t[3] }}</td>
+                <td>{{ t[4] }}</td>
+                <td>{{ t[5] }}</td>
+                <td>{{ t[7] }}</td>
+                <td>{{ t[8] }}</td>
+                <td>{{ t[9] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <br><br>
+     <table border="1px">
+      <thead>
+            <tr>
+                <td>Med ID:</td>
+                <td>Med Name:</td>
+                <td>Unit Price:</td>
+                <td>Quantity Issued:</td>
+                <td>Date Issued:</td>
+          
+            </tr>
+      </thead>
+      <tbody>
+        {% for t in temp1 %}
+        <tr>
+            <td>{{t[1]}}</td>
+            <td>{{t[2]}}</td>
+            <td>{{t[3]}}</td>
+            <td>{{t[4]}}</td>
+            <td>{{t[5]}}</td>
+        </tr>
+     {% endfor %}
+    
+    </tbody>
+  </table>
+  
+</body>
+</html>
